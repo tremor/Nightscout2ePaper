@@ -14,7 +14,7 @@ DIFFH=$((DIFF/60))
 LASTDATE=$(date -d @$LASTVALUE +%H:%M)
 if [ $DIFF -gt 10 ]; then echo 1 > "old.txt"; else echo 0 > "old.txt"; fi
 
-if [ $DIFF -lt 6 ]; then
+if [ $DIFF -lt 60 ]; then
         echo "Vor" $DIFF "Min um" $LASTDATE > "timeinfo.txt"
         python2 nightscout.py;
 else
