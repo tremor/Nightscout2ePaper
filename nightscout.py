@@ -9,8 +9,8 @@ import traceback
 try:
     epd = epd2in13b.EPD()
     epd.init()
-    print("Clear...")
-    epd.Clear()
+#    print("Clear...")
+#    epd.Clear()            #Not needed?
     
     svgfile = open("value.txt", "r")		#File with last mlg/dl value
     infofile = open("timeinfo.txt", "r")	#File with timestamp of last value
