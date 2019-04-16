@@ -5,8 +5,14 @@ import epd2in13b
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
+import RPi.GPIO as GPIO 
+from time import sleep
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.output(17, GPIO.LOW)
 
 try:
+    GPIO.output(17, 1)
     epd = epd2in13b.EPD()
     epd.init()
 #    print("Clear...")
@@ -86,7 +92,8 @@ try:
     epd.display(epd.getbuffer(HBlackimage.rotate(180)), epd.getbuffer(HRedimage.rotate(180)))
 
     time.sleep(0)
-  #  epd.sleep()
+    epd.sleep()
+    GPIO.output(17, 0)
 
 except:
     svgobject = open("value.txt", "r")
